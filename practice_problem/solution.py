@@ -1,4 +1,4 @@
-with open("a_example", "r") as file:
+with open("b_example", "r") as file:
     firstLine = file.readline().strip()
     M, T2, T3, T4 = list(map(int, firstLine.split(" ")))
     pizzas = []
@@ -20,12 +20,12 @@ with open("a_example", "r") as file:
     for team in range(T4):
         if i + 3 > M:
             break
-        solution.append((2, i, i+1, i+2, i+3))
+        solution.append((4, i, i+1, i+2, i+3))
         i += 4
 
     print(solution)
 
-with open("a_solution", "w") as file:
+with open("b_solution", "w") as file:
     file.write(str(len(solution)) + "\n")
     for s in solution:
         s = list(map(str, s))
