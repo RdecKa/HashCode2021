@@ -6,6 +6,8 @@ if len(sys.argv) > 1:
     candidate = sys.argv[1]
     if len(candidate) == 1 and candidate in "abcde":
         selectedInput = candidate
+    else:
+        print(f"! Invalid input {candidate}, using default")
 print(f"Selected input: {selectedInput}")
 
 # Read input
