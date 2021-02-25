@@ -26,15 +26,15 @@ class Intersection:
 
     def scheduleWeighted(self, simulationLength):
         self.schedule = []
-        # maxInterval = min(len(self.incoming) * 1, simulationLength)
-        # totalWeight = sum(
-        #     [street.usedByCarsWeighted for street in self.incoming])
+        maxInterval = min(len(self.incoming) * 1, simulationLength)
+        totalWeight = sum(
+            [street.usedByCars for street in self.incoming])
         for street in self.incoming:
             if street.usedByCars == 0:
                 continue
-            # weight = (street.usedByCarsWeighted / totalWeight) * maxInterval
-            # weight = min(weight, street.usedByCars)
-            weight = 1
+            weight = (street.usedByCars / totalWeight) * maxInterval
+            weight = min(weight, street.usedByCars)
+            # weight = 1
             self.schedule.append((street, math.ceil(weight)))
 
         # Sort
