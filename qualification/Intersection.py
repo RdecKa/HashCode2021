@@ -39,7 +39,7 @@ class Intersection:
 
         # Sort
         self.schedule = sorted(
-            self.schedule, key=lambda el: el[0].numCarsStartingHere, reverse=True)
+            self.schedule, key=lambda el: (el[0].numCarsStartingHere, el[0].length), reverse=True)
 
     def getScheduleString(self):
         if len(self.schedule) == 0:
