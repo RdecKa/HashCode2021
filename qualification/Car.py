@@ -3,7 +3,7 @@ class Car:
         self.path = path
 
     def __str__(self):
-        return ", ".join([str(s) for s in self.path])
+        return ", ".join([s.name for s in self.path])
 
     @staticmethod
     def fromString(stringInput, allStreets: dict):

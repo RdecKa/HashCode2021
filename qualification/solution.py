@@ -1,5 +1,7 @@
 from Street import *
 from Car import *
+from Intersection import *
+
 import sys
 
 # Read which input to choose
@@ -16,14 +18,21 @@ print(f"Selected input: {selectedInput}")
 with open(f"input/{selectedInput}.in", "r") as file:
     firstLine = file.readline().strip()
     D, I, S, V, F = list(map(int, firstLine.split(" ")))
+
+    allIntersections = [Intersection() for _ in range(I)]
     allStreets = {}
     for s in range(S):
         street = Street.fromString(file.readline().strip())
         allStreets[street.name] = street
+        allIntersections[street.start].addOutgoing(street)
+        allIntersections[street.end].addIncoming(street)
         print(street)
     for v in range(V):
         car = Car.fromString(file.readline().strip(), allStreets)
         print(car)
+
+    for intersection in allIntersections:
+        print(intersection)
 
 # Solve
 
