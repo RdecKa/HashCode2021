@@ -5,6 +5,7 @@ class Street:
         self.name = name
         self.length = length
         self.usedByCars = 0
+        self.usedByCarsWeighted = 0
         self.numCarsStartingHere = 0
 
     def __str__(self):
@@ -16,8 +17,9 @@ class Street:
         B, E, name, L = stringInput.split(" ")
         return Street(int(B), int(E), name, int(L))
 
-    def increaseCounterUsedByCars(self):
+    def increaseCounterUsedByCars(self, weight):
         self.usedByCars += 1
+        self.usedByCarsWeighted += weight
 
     def increaseCounterStartingHere(self):
         self.numCarsStartingHere += 1
