@@ -30,7 +30,7 @@ with open(f"input/{selectedInput}.in", "r") as file:
         # print(street)
 
     for v in range(V):
-        car = Car.fromString(file.readline().strip(), allStreets)
+        car = Car.fromString(file.readline().strip(), allStreets, D)
         # print(car)
 
     # for street in allStreets.values():
