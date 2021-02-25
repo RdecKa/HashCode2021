@@ -4,7 +4,7 @@ import sys
 selectedInput = "a"
 if len(sys.argv) > 1:
     candidate = sys.argv[1]
-    if len(candidate) == 1 and candidate in "abcde":
+    if len(candidate) == 1 and candidate in "abcdef":
         selectedInput = candidate
     else:
         print(f"! Invalid input {candidate}, using default")

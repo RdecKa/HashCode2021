@@ -3,7 +3,7 @@
 if [ $# -eq 0 ]
 then
     # If no arguments provided, run all
-    all_inputs="a b c d e"
+    all_inputs="a b c d e f"
 else
     all_inputs="$@"
 fi
