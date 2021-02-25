@@ -19,27 +19,37 @@ with open(f"input/{selectedInput}.in", "r") as file:
     firstLine = file.readline().strip()
     D, I, S, V, F = list(map(int, firstLine.split(" ")))
 
-    allIntersections = [Intersection() for _ in range(I)]
+    allIntersections = [Intersection(id) for id in range(I)]
     allStreets = {}
+
     for s in range(S):
         street = Street.fromString(file.readline().strip())
         allStreets[street.name] = street
         allIntersections[street.start].addOutgoing(street)
         allIntersections[street.end].addIncoming(street)
-        print(street)
+        # print(street)
+
     for v in range(V):
         car = Car.fromString(file.readline().strip(), allStreets)
-        print(car)
+        # print(car)
 
-    for intersection in allIntersections:
-        print(intersection)
+    # for street in allStreets.values():
+    #     print(street)
+
+    # for intersection in allIntersections:
+    #     print(intersection)
 
 # Solve
-
+busyIntersections = 0
+for inter in allIntersections:
+    # inter.scheduleSimple()
+    inter.scheduleWeighted(D)
+    if len(inter.schedule) > 0:
+        busyIntersections += 1
 
 # Write output file
-# with open(f"{selectedInput}.out", "w") as file:
-#     file.write(str(len(solution)) + "\n")
-#     for s in solution:
-#         s = list(map(str, s))
-#         file.write(" ".join(s) + "\n")
+with open(f"{selectedInput}.out", "w") as file:
+    file.write(str(busyIntersections) + "\n")
+    for inter in allIntersections:
+        if len(inter.schedule) > 0:
+            file.write(inter.getScheduleString())

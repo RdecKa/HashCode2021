@@ -10,5 +10,7 @@ class Car:
         streets = stringInput.split(" ")[1:]
         path = []
         for streetName in streets:
-            path.append(allStreets[streetName])
+            street = allStreets[streetName]
+            path.append(street)
+            street.increaseCounterUsedByCars()
         return Car(path)
