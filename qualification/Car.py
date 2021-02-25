@@ -13,4 +13,8 @@ class Car:
             street = allStreets[streetName]
             path.append(street)
             street.increaseCounterUsedByCars()
+
+        # Starting street:
+        allStreets[streets[0]].increaseCounterStartingHere()
+
         return Car(path)

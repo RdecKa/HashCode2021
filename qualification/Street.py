@@ -5,6 +5,7 @@ class Street:
         self.name = name
         self.length = length
         self.usedByCars = 0
+        self.numCarsStartingHere = 0
 
     def __str__(self):
         return f"{self.name}: {self.start} - {self.end} ({self.length}) " + \
@@ -17,3 +18,6 @@ class Street:
 
     def increaseCounterUsedByCars(self):
         self.usedByCars += 1
+
+    def increaseCounterStartingHere(self):
+        self.numCarsStartingHere += 1

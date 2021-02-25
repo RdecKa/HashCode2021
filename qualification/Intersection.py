@@ -32,7 +32,12 @@ class Intersection:
             if street.usedByCars == 0:
                 continue
             weight = (street.usedByCars / totalWeight) * maxInterval
-            self.schedule.append((street.name, math.ceil(weight)))
+            weight = min(weight, street.usedByCars)
+            self.schedule.append((street, math.ceil(weight)))
+
+        # Sort
+        self.schedule = sorted(
+            self.schedule, key=lambda el: el[0].numCarsStartingHere)
 
     def getScheduleString(self):
         if len(self.schedule) == 0:
@@ -41,5 +46,5 @@ class Intersection:
         s = str(self.id) + "\n"
         s += str(len(self.schedule)) + "\n"
         for el in self.schedule:
-            s += el[0] + " " + str(el[1]) + "\n"
+            s += el[0].name + " " + str(el[1]) + "\n"
         return s
